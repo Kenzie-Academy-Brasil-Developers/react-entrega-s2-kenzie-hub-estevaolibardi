@@ -1,21 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vmax;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 15px;
+  justify-content: center;
 
-  @media (min-width: 800px) {
+  /* @media (min-width: 800px) {
     height: auto;
-  }
+  } */
+`;
+
+export const Wrapper = styled.div`
+  width: 369px;
+  padding-bottom: 50px;
 `;
 
 export const StyledForm = styled.form`
-  width: 92.5%;
-  height: 100%;
   padding: 20px;
   background-color: var(--Grey-3);
   display: flex;
@@ -25,22 +25,12 @@ export const StyledForm = styled.form`
   border-radius: 5px;
 
   h2 {
-    font-size: 14.3916px;
-  }
-
-  select {
-    width: 100%;
-    height: 38.5px;
-    background-color: var(--Grey-2);
-    border: 2px solid var(--Grey-2);
-    border-radius: 3px;
-    color: var(--Grey-1);
-    padding-left: 10px;
+    font-size: 1.3rem;
   }
 
   p {
     color: var(--Grey-1);
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 400;
     margin-top: 18px;
     margin-bottom: 20px;
@@ -48,10 +38,10 @@ export const StyledForm = styled.form`
 
   span {
     color: var(--primary-Negative);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
-    width: 80%;
-    text-align: end;
+    width: 100%;
+    text-align: start;
     color: #ff427f;
   }
 
@@ -62,17 +52,17 @@ export const StyledForm = styled.form`
 
   label {
     width: 87%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
-  @media (min-width: 800px) {
-    width: 369px;
-    height: 850px;
+  /* @media (min-width: 800px) {
+    height: 1000px;
+    margin-bottom: 100px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-  }
+  } */
 `;
 
 export const ContainerHeader = styled.div`
@@ -80,8 +70,6 @@ export const ContainerHeader = styled.div`
   margin-top: 49.46px;
   margin-bottom: 25.32px;
   justify-content: space-between;
-  width: 92.5%;
-
   img {
     height: 65%;
   }
@@ -92,35 +80,14 @@ export const ContainerHeader = styled.div`
     background-color: var(--Grey-3);
     border-radius: 4px;
     border: none;
+    color: #ffffff;
   }
 
   p {
     margin-top: 18px;
   }
 
-  @media (min-width: 800px) {
-    max-width: 366px;
+  /* @media (min-width: 800px) {
     margin-bottom: 15px;
-  }
-`;
-
-export const DivSelect = styled.div`
-  width: 100%;
-  height: 70px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  label {
-    width: 87%;
-    margin-bottom: 15px;
-  }
-
-  select {
-    width: 87.8%;
-  }
+  } */
 `;

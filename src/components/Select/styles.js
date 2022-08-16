@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 87.8%;
-  height: 70px;
+  width: 100%;
+  height: 75px;
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
@@ -10,13 +10,13 @@ export const Container = styled.div`
   align-items: center;
 
   label {
-    width: 90%;
+    width: 87.7%;
   }
 `;
 
 export const StyledSelect = styled.select`
-  width: 87.8%;
-  height: 38.5px;
+  width: 87.7%;
+  height: 48px;
   background-color: var(--Grey-2);
   border: 2px solid var(--Grey-2);
   border-radius: 3px;

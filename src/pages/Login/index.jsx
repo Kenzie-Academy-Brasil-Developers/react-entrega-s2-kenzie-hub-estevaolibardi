@@ -1,18 +1,18 @@
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
-import logo from "../../assets/logo.png";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import { LoginContainer, Form } from "../Login/styles";
-import api from "../../services/api";
-import { useNavigate, Navigate } from "react-router-dom";
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
+import logo from '../../assets/logo.png';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import { LoginContainer, Form, Wrapper } from '../Login/styles';
+import api from '../../services/api';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 const Login = ({ setAuth, auth }) => {
   const formSchema = yup.object().shape({
-    email: yup.string().required("Email Obrigatório").email("Email Inválido"),
-    password: yup.string().required("Senha Obrigatória"),
+    email: yup.string().required('Email Obrigatório').email('Email Inválido'),
+    password: yup.string().required('Senha Obrigatória'),
   });
 
   const {
@@ -29,22 +29,22 @@ const Login = ({ setAuth, auth }) => {
 
   const handleLogin = async (data) => {
     const response = await api
-      .post("/sessions", data)
+      .post('/sessions', data)
       .then((response) => {
-        toast.success("Login feito com sucesso!");
+        toast.success('Login feito com sucesso!');
         localStorage.setItem(
-          "@kenzieHub:token",
+          '@kenzieHub:token',
           JSON.stringify(response.data.token)
         );
         localStorage.setItem(
-          "@kenzieHub:user",
+          '@kenzieHub:user',
           JSON.stringify(response.data.user)
         );
         setAuth(true);
-        usenavigate("/home");
+        usenavigate('/home');
       })
       .catch((err) => {
-        toast.error("Email ou senha inválidos");
+        toast.error('Email ou senha inválidos');
         console.log(err);
       });
     // const { access } = response.data;
@@ -58,32 +58,34 @@ const Login = ({ setAuth, auth }) => {
 
   return (
     <LoginContainer>
-      <img src={logo} alt="logo-kenzie" />
-      <Form onSubmit={handleSubmit(handleLogin)}>
-        <h2>Login</h2>
-        <Input
-          register={register}
-          name="email"
-          placeholder="Digite aqui seu email"
-          label="Email"
-          autoComplete="off"
-        />
-        <span>{errors.email?.message}</span>
-        <Input
-          register={register}
-          name="password"
-          placeholder="Digite aqui sua senha"
-          label="Senha"
-          type="password"
-          autoComplete="off"
-        />
-        <span>{errors.password?.message}</span>
-        <Button type="submit">Entrar</Button>
-        <p>Ainda nao possui uma conta?</p>
-        <Button register onClick={() => usenavigate("/sign-in")}>
-          Cadastre-se
-        </Button>
-      </Form>
+      <Wrapper>
+        <img src={logo} alt="logo-kenzie" />
+        <Form onSubmit={handleSubmit(handleLogin)}>
+          <h2>Login</h2>
+          <Input
+            register={register}
+            name="email"
+            placeholder="Digite aqui seu email"
+            label="Email"
+            error={errors.email?.message}
+            autoComplete="off"
+          />
+          <Input
+            register={register}
+            name="password"
+            placeholder="Digite aqui sua senha"
+            label="Senha"
+            error={errors.password?.message}
+            type="password"
+            autoComplete="off"
+          />
+          <Button type="submit">Entrar</Button>
+          <p>Ainda nao possui uma conta?</p>
+          <Button register onClick={() => usenavigate('/sign-in')}>
+            Cadastre-se
+          </Button>
+        </Form>
+      </Wrapper>
     </LoginContainer>
   );
 };

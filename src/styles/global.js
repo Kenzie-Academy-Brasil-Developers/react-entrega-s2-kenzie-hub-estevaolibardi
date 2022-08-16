@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 *{
@@ -8,12 +8,22 @@ export default createGlobalStyle`
     outline: 0;
 }
 
-body, input, button{
+/* body, input, button{
  font-family: 'Inter', sans-serif;
- font-size: 0.75rem;
+ font-size: 1rem;
  background-color: var(--Grey-4);
  color: var(--Grey-0);
-}
+} */
+
+body{
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--Grey-4);
+        min-height: 100vh;
+        color: var(--Grey-0);
+        width: 100vw;
+        overflow-x: hidden;
+    }
 
 button{
     cursor: pointer;

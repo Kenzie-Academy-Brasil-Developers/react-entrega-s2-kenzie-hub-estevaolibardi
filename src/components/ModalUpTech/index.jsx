@@ -1,10 +1,11 @@
-import { ContButton, ModalContainer, StyledButton } from "./styles";
-import Button from "../Button";
-import Input from "../Input";
-import api from "../../services/api";
-import { useState } from "react";
-import { toast } from "react-toastify";
-import { useForm } from "react-hook-form";
+import { ContButton, ModalContainer, StyledButton, Header } from './styles';
+import Button from '../Button';
+import Input from '../Input';
+import api from '../../services/api';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const ModalUpTech = ({ setModalUpTech, upTech }) => {
   const close = () => {
@@ -12,7 +13,7 @@ const ModalUpTech = ({ setModalUpTech, upTech }) => {
   };
 
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@kenzieHub:token")) || ""
+    JSON.parse(localStorage.getItem('@kenzieHub:token')) || ''
   );
 
   const { register, handleSubmit } = useForm();
@@ -22,18 +23,23 @@ const ModalUpTech = ({ setModalUpTech, upTech }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
-        toast.success("Tecnologia atualizada");
+        toast.success('Status da tech atualizada!');
+        setModalUpTech(false);
       })
-      .catch((err) => toast.error("Ops! Algo deu errado."));
+      .catch((err) => toast.error('Ops! Algo deu errado.'));
   };
 
   return (
     <>
       <ModalContainer>
-        <div>
-          <h4>Tecnologia Detalhes</h4>
-          <StyledButton onClick={close}> X </StyledButton>
-        </div>
+        <Header>
+          <div>
+            <h4>Atualizar Tech</h4>
+            <StyledButton onClick={close}>
+              <AiOutlineClose size={20} />
+            </StyledButton>
+          </div>
+        </Header>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             register={register}

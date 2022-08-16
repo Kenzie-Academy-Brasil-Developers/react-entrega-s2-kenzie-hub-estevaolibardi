@@ -1,16 +1,16 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 import {
   Container,
   StyledButton,
   ContStyledButton,
   Cont,
   Wrap,
-} from "./styles";
-import api from "../../services/api";
-import { CgClose } from "react-icons/cg";
+} from './styles';
+import api from '../../services/api';
+import { CgClose } from 'react-icons/cg';
 
 const Card = ({ status, title, id, setUpTech, setModalUpTech }) => {
-  const token = JSON.parse(localStorage.getItem("@kenzieHub:token"));
+  const token = JSON.parse(localStorage.getItem('@kenzieHub:token'));
 
   const delTech = (buttonId) => {
     api
@@ -18,7 +18,7 @@ const Card = ({ status, title, id, setUpTech, setModalUpTech }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
-        toast.success("Tecnologia excluída").catch((err) => console.log(err));
+        toast.success('Tecnologia excluída').catch((err) => console.log(err));
       });
   };
 
@@ -31,7 +31,7 @@ const Card = ({ status, title, id, setUpTech, setModalUpTech }) => {
     <Cont>
       <Container id={id} key={id} onClick={showModal}>
         <Wrap id={id} key={id} onClick={showModal}>
-          <h3>{title}</h3>
+          <h4>{title}</h4>
           <p>{status}</p>
         </Wrap>
       </Container>

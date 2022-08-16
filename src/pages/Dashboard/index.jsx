@@ -7,30 +7,32 @@ import {
   Container,
   StyledButton,
   ModalDiv,
-} from "./styles";
-import logo from "../../assets/logo.png";
-import api from "../../services/api";
-import Card from "../../components/Card";
-import Add from "../../assets/+.png";
-import ModalAddTech from "../../components/ModalAddTech";
-import ModalUpTech from "../../components/ModalUpTech";
-import { useNavigate, Navigate } from "react-router-dom";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
+  TechImg,
+} from './styles';
+import logo from '../../assets/logo.png';
+import api from '../../services/api';
+import Card from '../../components/Card';
+import { MdOutlineAdd } from 'react-icons/md';
+import ModalAddTech from '../../components/ModalAddTech';
+import ModalUpTech from '../../components/ModalUpTech';
+import { useNavigate, Navigate } from 'react-router-dom';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { useState, useEffect } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { GiTechnoHeart } from 'react-icons/gi';
 
 const Dashboard = ({ auth, setAuth }) => {
   const [modalAddTech, setModalAddTech] = useState(false);
   const [modalUpTech, setModalUpTech] = useState(false);
-  const [upTech, setUpTech] = useState("");
-  const [user] = useState(JSON.parse(localStorage.getItem("@kenzieHub:user")));
+  const [upTech, setUpTech] = useState('');
+  const [user] = useState(JSON.parse(localStorage.getItem('@kenzieHub:user')));
   const [techList, setTechList] = useState([]);
   // console.log(user);
 
   const formSchema = yup.object().shape({
-    email: yup.string().required("Email Obrigatório").email("Email Inválido"),
-    password: yup.string().required("Senha Obrigatória"),
+    email: yup.string().required('Email Obrigatório').email('Email Inválido'),
+    password: yup.string().required('Senha Obrigatória'),
   });
 
   useEffect(() => {
@@ -58,7 +60,7 @@ const Dashboard = ({ auth, setAuth }) => {
 
   const logout = () => {
     localStorage.clear();
-    usenavigate("/");
+    usenavigate('/');
     setAuth(false);
   };
 
@@ -75,7 +77,7 @@ const Dashboard = ({ auth, setAuth }) => {
         </Header>
         <hr />
         <WelcomeUser>
-          <span>Olá, {user.name}</span>
+          <h2>Olá, {user.name}</h2>
           <p>{user.course_module}</p>
         </WelcomeUser>
         <hr />
@@ -83,33 +85,40 @@ const Dashboard = ({ auth, setAuth }) => {
       <ContTech>
         <span>Tecnologias</span>
         <StyledButton onClick={createTech}>
-          <img src={Add} alt="logo-kenzie" />
+          <MdOutlineAdd size={20} />
         </StyledButton>
       </ContTech>
       <DivTech>
+        <TechImg>
+          <GiTechnoHeart size={50} />
+        </TechImg>
+
         {modalAddTech && (
           <ModalAddTech user={user} setModalAddTech={setModalAddTech} />
         )}
-        <ModalDiv>
-          {modalUpTech && (
-            <ModalUpTech
-              user={user}
-              setModalUpTech={setModalUpTech}
-              upTech={upTech}
-            />
-          )}
-        </ModalDiv>
 
-        {techList.map(({ title, status, id }) => (
-          <Card
+        {modalUpTech && (
+          <ModalUpTech
+            user={user}
             setModalUpTech={setModalUpTech}
-            setUpTech={setUpTech}
-            title={title}
-            status={status}
-            id={id}
-            key={id}
+            upTech={upTech}
           />
-        ))}
+        )}
+
+        <ModalDiv>
+          <div>
+            {techList.map(({ title, status, id }) => (
+              <Card
+                setModalUpTech={setModalUpTech}
+                setUpTech={setUpTech}
+                title={title}
+                status={status}
+                id={id}
+                key={id}
+              />
+            ))}
+          </div>
+        </ModalDiv>
       </DivTech>
     </Container>
   );

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 95%;
@@ -17,7 +17,7 @@ export const Container = styled.div`
 
   p {
     font-size: 12px;
-    color: var(--Grey-1);
+    color: #ff7192;
     font-weight: 400;
   }
   p:hover {
@@ -70,9 +70,13 @@ export const ContStyledButton = styled.div`
 `;
 
 export const Cont = styled.div`
-  width: 91%;
+  width: 100%;
   display: flex;
   justify-content: center;
+
+  @media (min-width: 800px) {
+    width: 91%;
+  }
 `;
 
 export const Wrap = styled.div`
@@ -82,7 +86,17 @@ export const Wrap = styled.div`
   width: 100%;
 
   @media (min-width: 800px) {
-    width: 55%;
-    margin-right: 50px;
+    width: 100%;
+    margin-right: 30px;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-top: 2px;
   }
 `;

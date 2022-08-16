@@ -1,6 +1,14 @@
-import { Container, StyledInput } from "./styles";
+import { Container, StyledInput, StyledError } from './styles';
 
-const Input = ({ placeholder, label, type, register, name, autoComplete }) => {
+const Input = ({
+  placeholder,
+  label,
+  type,
+  register,
+  name,
+  error,
+  autoComplete,
+}) => {
   return (
     <Container>
       <label>{label}</label>
@@ -10,6 +18,7 @@ const Input = ({ placeholder, label, type, register, name, autoComplete }) => {
         autoComplete={autoComplete}
         {...register(name)}
       />
+      <StyledError>{!!error && <span>{error}</span>}</StyledError>
     </Container>
   );
 };

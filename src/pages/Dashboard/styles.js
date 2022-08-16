@@ -1,19 +1,32 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 750px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
 export const ContTech = styled.div`
-  width: 92.5%;
+  width: 280px;
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   align-items: center;
+
+  @media (min-width: 375px) {
+    width: 310px;
+  }
+
+  @media (min-width: 425px) {
+    width: 330px;
+  }
+
+  @media (min-width: 600px) {
+    width: 500px;
+  }
 
   @media (min-width: 800px) {
     min-width: 740px;
@@ -21,13 +34,13 @@ export const ContTech = styled.div`
   }
 
   span {
-    font-size: 16px;
+    font-size: 1.2rem;
     color: var(--Grey-0);
     font-weight: 600;
   }
 
   button {
-    width: 32.49px;
+    width: 32px;
     height: 32px;
     background-color: var(--Grey-3);
     border-radius: 4px;
@@ -42,34 +55,47 @@ export const ContTech = styled.div`
 
 export const WelcomeUser = styled.div`
   height: 131px;
+  width: 280px;
   margin-top: 20px;
-  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 
-  span {
+  h2 {
     color: var(--Grey-0);
-    font-size: 18px;
     font-weight: bold;
-    width: 92%;
-    text-align: start;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
     margin-bottom: 10px;
   }
 
   p {
-    width: 92%;
     color: var(--Grey-1);
-    font-size: 12px;
-    text-align: start;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  @media (min-width: 375px) {
+    width: 310px;
+  }
+
+  @media (min-width: 425px) {
+    width: 330px;
+  }
+
+  @media (min-width: 600px) {
+    width: 500px;
   }
 
   @media (min-width: 800px) {
-    min-width: 740px;
-    max-width: 779.73px;
+    width: 740px;
     margin-top: auto;
-    width: 92.5%;
+
+    h2 {
+      text-align: start;
+    }
 
     span {
       width: 100%;
@@ -78,25 +104,48 @@ export const WelcomeUser = styled.div`
 
     p {
       width: 100%;
+      text-align: start;
     }
   }
 `;
 
 export const Header = styled.div`
   display: flex;
-  width: 92.5%;
+  width: 280px;
   justify-content: space-between;
   margin-bottom: 20px;
+  align-items: center;
 
   @media (min-width: 800px) {
     min-width: 740px;
     max-width: 779.73px;
     margin-bottom: 20px;
   }
+
+  button {
+    color: #ffffff;
+    font-size: 1rem;
+  }
+
+  @media (min-width: 375px) {
+    width: 310px;
+  }
+
+  @media (min-width: 425px) {
+    width: 330px;
+  }
+
+  @media (min-width: 600px) {
+    width: 500px;
+  }
+
+  @media (min-width: 800px) {
+    width: 740px;
+  }
 `;
 
 export const StyledForm = styled.div`
-  width: 92.5%;
+  width: 280px;
   height: 568.47px;
   padding: 20px;
   background-color: var(--Grey-3);
@@ -147,6 +196,22 @@ export const StyledForm = styled.div`
     width: 87%;
     margin-bottom: 15px;
   }
+
+  @media (min-width: 375px) {
+    width: 310px;
+  }
+
+  @media (min-width: 425px) {
+    width: 330px;
+  }
+
+  @media (min-width: 600px) {
+    width: 500px;
+  }
+
+  @media (min-width: 800px) {
+    width: 740px;
+  }
 `;
 
 export const ContainerHeader = styled.div`
@@ -173,6 +238,12 @@ export const ContainerHeader = styled.div`
     border-radius: 4px;
     border: none;
   }
+
+  @media (min-width: 800px) {
+    img {
+      height: 20px;
+    }
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -191,7 +262,7 @@ export const StyledButton = styled.button`
 `;
 
 export const DivTech = styled.div`
-  width: 92.5%;
+  width: 280px;
   height: 416.37px;
   position: relative;
   background-color: var(--Grey-3);
@@ -200,16 +271,72 @@ export const DivTech = styled.div`
   justify-content: flex-start;
   align-items: center;
 
+  @media (min-width: 375px) {
+    width: 310px;
+  }
+
+  @media (min-width: 425px) {
+    width: 330px;
+  }
+
+  @media (min-width: 600px) {
+    width: 500px;
+  }
+
   @media (min-width: 800px) {
     min-width: 740px;
     max-width: 779.73px;
     height: 400px;
+    flex-direction: row;
   }
 `;
 
 export const ModalDiv = styled.div`
   width: 91%;
+  height: 100%;
   display: flex;
-  margin-top: 40px;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  overflow-y: auto;
+
+  div {
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f8f9fabf;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+`;
+
+export const TechImg = styled.div`
+  width: 400px;
+  display: none;
   justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 150px;
+    height: 150px;
+    color: #ffffff75;
+  }
+
+  @media (min-width: 800px) {
+    display: flex;
+  }
 `;
